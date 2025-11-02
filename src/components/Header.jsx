@@ -21,7 +21,7 @@ function Header() {
           />
           <Link to={"/"} className="center-div">
             <img src={logo} alt="" className="size-8 sm:size-10" />
-            <span className="font-bold text-[0.8rem] text-xl tracking-tighter">
+            <span className="font-bold text-[0.8rem] sm:text-xl tracking-tighter">
               Youtube
             </span>
           </Link>
@@ -30,11 +30,11 @@ function Header() {
         <div className="basis-2/5">
           <div className="center-div relative sm:overflow-hidden overflow-hidden sm:w-full sm:h-full  border rounded-full">
             <input
-              className="focus:outline-none w-full text-[.8rem] pl-2 sm:pl-4 sm:py-2 sm:pr-5"
+              className="focus:outline-none w-full text-[.8rem] sm:text-[1rem] pl-2 sm:pl-4 sm:py-1 sm:pr-5"
               type="search"
               placeholder="Search"
             />
-            <CiSearch className="bg-[#222222] text-white h-6 w-6 px-1 sm:h-10 sm:w-15 sm:p-2" />
+            <CiSearch className="bg-[#222222] text-white h-6 w-6 px-1 sm:h-9 sm:w-15 sm:p-2" />
           </div>
         </div>
         {/* right */}
