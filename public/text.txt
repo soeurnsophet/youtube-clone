@@ -1,1 +1,3 @@
 apikey = "AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA"
+
+sm:p-5 sm:mt-15 sm:flex gap-4 flex-col sm:flex-row sm:items-start

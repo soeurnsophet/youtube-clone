@@ -18,25 +18,32 @@ function Recomment() {
     loadRecommentVideos();
   }, [categoryId]);
   return (
-    <div>
+    <div className="">
       {recommentVideos.map((item, i) => (
         <Link
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              left: 100,
+              behavior: "smooth",
+            });
+          }}
           to={`/${item?.snippet?.categoryId}/${item?.id}`}
           key={i}
-          className="flex items-start gap-2 mb-3">
+          className="flex flex-col items-start gap-2 mb-3 sm:flex-row md:flex-col lg:flex-row">
           <img
-            className="w-60"
+            className="w-full sm:w-60"
             src={item?.snippet.thumbnails.medium.url}
             alt=""
           />
           <div className="flex-1">
-            <h1 className="font-bold text-lg leading-snug break-all">
+            <h1 className="font-bold text-sm sm:text-lg md:text-[1rem] md:leading-5 leading-snug break-all">
               {item?.snippet.title}
             </h1>
-            <p className="text-[0.85rem] font-medium text-gray-600">
+            <p className="text-[0.75rem] sm:text-[0.85rem] font-medium text-gray-600">
               {item?.snippet.channelTitle}
             </p>
-            <p className="text-[0.85rem] font-medium text-gray-600">
+            <p className="text-[0.75rem] sm:text-[0.85rem] font-medium text-gray-600">
               {convertViews(item?.statistics.viewCount) <= 1
                 ? convertViews(item?.statistics.viewCount) + " view"
                 : convertViews(item?.statistics.viewCount) + " views"}{" "}
