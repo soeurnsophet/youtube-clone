@@ -28,7 +28,10 @@ function Feed() {
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {videos.map((video) => (
         <div key={video.id} className="m-2 cursor-pointer">
-          <Link to={`/${video.snippet.categoryId}/${video.id}`}>
+          <Link
+            to={`/${encodeURIComponent(
+              video.snippet.categoryId
+            )}/${encodeURIComponent(video.id)}`}>
             <img
               src={video.snippet.thumbnails.medium.url}
               alt={video.snippet.title}

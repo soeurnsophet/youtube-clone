@@ -91,7 +91,7 @@ function Video() {
           <h1 className="text-lg sm:text-2xl font-medium">
             {channelsDetails?.snippet.title}
           </h1>
-          <h1 className="text-[0.8rem]">
+          <h1 className="text-[0.8rem] sm:text-[1rem]">
             {convertViews(channelsDetails?.statistics.subscriberCount)}{" "}
             Subscribed
           </h1>
@@ -104,7 +104,7 @@ function Video() {
       </div>
 
       <div className="ml-16 mt-2 sm:mt-5">
-        <h1 className="text-[.8rem] sm:text-md border-b pb-2">
+        <h1 className="text-[.8rem] sm:text-md md:text-lg border-b pb-2">
           {channelsDetails?.snippet?.description}
         </h1>
         <h2>

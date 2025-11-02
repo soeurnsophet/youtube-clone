@@ -11,8 +11,8 @@ import { Contexts } from "../context/ContextProvide";
 function Header() {
   const { setIsExpand } = useContext(Contexts);
   return (
-    <header className="fixed top-0 left-0 h-16 w-full z-50 bg-white shadow-lg ">
-      <nav className="h-full flex items-center justify-between px-2 sm:px-5 container">
+    <header className="fixed top-0 left-0 h-16 w-full z-50 bg-white shadow-lg">
+      <nav className="h-full flex items-center justify-between px-2 sm:px-5 container mx-auto">
         {/* left */}
         <div className="center-div">
           <IoMenu
@@ -34,7 +34,7 @@ function Header() {
               type="search"
               placeholder="Search"
             />
-            <CiSearch className="bg-[#222222] text-white h-6 w-6 px-1 sm:h-10 sm:w-15 sn:p-2" />
+            <CiSearch className="bg-[#222222] text-white h-6 w-6 px-1 sm:h-10 sm:w-15 sm:p-2" />
           </div>
         </div>
         {/* right */}
