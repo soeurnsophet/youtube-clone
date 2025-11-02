@@ -1,88 +1,101 @@
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
+import { IoGameController } from "react-icons/io5";
+import { FaCarSide } from "react-icons/fa";
+import { MdOutlineSportsBasketball } from "react-icons/md";
+import { HiOutlineTv } from "react-icons/hi2";
+import { GrTechnology } from "react-icons/gr";
+import { MdLibraryMusic } from "react-icons/md";
+import { IoNewspaperSharp } from "react-icons/io5";
+import { FaMicroblog } from "react-icons/fa6";
 import profile from "/assets/images/profile.jpg";
+import profileNemRinda from "/assets/images/nemrinda.jpg";
 
-function Sidebar({ category, setCategory }) {
+function Sidebar({ category, setCategory, isExpand }) {
   return (
-    <div className="w-50 shadow-xl min-h-[calc(100vh-4rem)] p-5 fixed left-0 top-16 z-50">
-      <div className="flex flex-col gap-3">
+    <div
+      className={`${
+        isExpand ? "w-50" : "w-15"
+      } overflow-hidden shadow-xl min-h-[calc(100vh-4rem)] h-full p-3 fixed left-0 top-16 z-50`}>
+      <div className={`${isExpand ? "" : "items-center"} flex flex-col gap-1`}>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 0 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm cursor-pointer p-2 ${
+            category === 0 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(0)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Home</span>
+          <AiFillHome className="text-xl" />
+          {isExpand && <span className="font-medium">Home</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 20 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm  cursor-pointer p-2 ${
+            category === 20 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(20)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Gaming</span>
+          <IoGameController className="text-xl" />
+          {isExpand && <span className="font-medium">Gaming</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 2 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm cursor-pointer p-2 ${
+            category === 2 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(2)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Automobiles</span>
+          <FaCarSide className="text-xl" />
+          {isExpand && <span className="font-medium">Automobiles</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 17 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm  cursor-pointer p-2 ${
+            category === 17 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(17)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Sports</span>
+          <MdOutlineSportsBasketball className="text-xl" />
+          {isExpand && <span className="font-medium">Sports</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 24 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm  cursor-pointer p-2 ${
+            category === 24 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(24)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Entertainment</span>
+          <HiOutlineTv className="text-xl" />
+          {isExpand && <span className="font-medium">Entertainment</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 28 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm  cursor-pointer p-2 ${
+            category === 28 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(28)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Technology</span>
+          <GrTechnology className="text-xl" />
+          {isExpand && <span className="font-medium">Technology</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 10 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm  cursor-pointer p-2 ${
+            category === 10 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(10)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Music</span>
+          <MdLibraryMusic className="text-xl" />
+          {isExpand && <span className="font-medium">Music</span>}
+          {/* <span className="font-medium">Music</span> */}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 22 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm  cursor-pointer p-2 ${
+            category === 22 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(22)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">Blogs</span>
+          <FaMicroblog className="text-xl" />
+          {isExpand && <span className="font-medium">Blogs</span>}
         </div>
         <div
-          className={`flex items-center justify-start gap-2 p-2 ${
-            category === 25 ? "bg-gray-200  rounded-lg" : ""
+          className={`flex items-center justify-start gap-2 hover:bg-gray-200 transition-all duration-300 ease-in-out hover:rounded-sm cursor-pointer p-2 ${
+            category === 25 ? "bg-gray-300  rounded-sm" : ""
           }`}
           onClick={() => setCategory(25)}>
-          <AiFillHome className="text-2xl" />
-          <span className="font-medium">News</span>
+          <IoNewspaperSharp className="text-xl" />
+          {isExpand && <span className="font-medium">News</span>}
         </div>
       </div>
 
-      <hr className="my-5" />
+      <hr className="my-3" />
       <div>
-        <h1>SUBSCRIBED</h1>
+        {isExpand && <h1 className="font-medium">SUBSCRIBED</h1>}
         <div className="mt-3 space-y-3">
           <div className="flex items-center justify-start gap-2">
             <img
@@ -90,39 +103,15 @@ function Sidebar({ category, setCategory }) {
               className="size-9 rounded-full object-center aspect-square"
               alt=""
             />
-            <span className="font-medium">PewDiePie</span>
+            {isExpand && <h1 className="font-medium">Soeurn Sophet</h1>}
           </div>
           <div className="flex items-center justify-start gap-2">
             <img
-              src={profile}
+              src={profileNemRinda}
               className="size-9 rounded-full object-center aspect-square"
               alt=""
             />
-            <span className="font-medium">PewDiePie</span>
-          </div>
-          <div className="flex items-center justify-start gap-2">
-            <img
-              src={profile}
-              className="size-9 rounded-full object-center aspect-square"
-              alt=""
-            />
-            <span className="font-medium">PewDiePie</span>
-          </div>
-          <div className="flex items-center justify-start gap-2">
-            <img
-              src={profile}
-              className="size-9 rounded-full object-center aspect-square"
-              alt=""
-            />
-            <span className="font-medium">PewDiePie</span>
-          </div>
-          <div className="flex items-center justify-start gap-2">
-            <img
-              src={profile}
-              className="size-9 rounded-full object-center aspect-square"
-              alt=""
-            />
-            <span className="font-medium">PewDiePie</span>
+            {isExpand && <h1 className="font-medium">Nem Rinda</h1>}
           </div>
         </div>
       </div>

@@ -14,19 +14,16 @@ function Feed({ category }) {
       const response = await axios.get(
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
       );
-      console.log(response.data);
       setVideos(response.data.items);
     } catch (error) {
       console.error("Error fetching videos:", error);
     }
   };
   useEffect(() => {
-    console.log(category);
-
     loadVideos(category);
   }, [category]);
   return (
-    <section className="grid grid-cols-4">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {videos.map((video) => (
         <div key={video.id} className="m-2 cursor-pointer">
           <Link to={`/${video.snippet.categoryId}/${video.id}`}>

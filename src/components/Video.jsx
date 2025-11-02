@@ -17,8 +17,6 @@ function Video({ vidId }) {
     const res = await axios.get(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vidId}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
     );
-    // console.log(res.data);
-
     setVideoDetails(res.data.items[0]);
   };
   const loadChannelsDetails = async () => {
@@ -28,17 +26,13 @@ function Video({ vidId }) {
     const resComments = await axios.get(
       `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=orderUnspecified&videoId=${vidId}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
     );
-    console.log(resComments.data);
-    // console.log(res.data);
-
     setChannelsDetails(res.data.items[0]);
     setComments(resComments.data.items);
   };
-  console.log(typeof comments);
 
   useEffect(() => {
     loadVideoDetails();
-  }, []);
+  }, [vidId]);
   useEffect(() => {
     if (videoDetails?.snippet?.channelId) {
       loadChannelsDetails();
@@ -89,11 +83,14 @@ function Video({ vidId }) {
           alt=""
           className="rounded-full size-13"
         />
-        <div>
+        <div className="leading-4">
           <h1 className="text-2xl font-medium">
             {channelsDetails?.snippet.title}
           </h1>
-          <h1>{convertViews(channelsDetails?.statistics.subscriberCount)}</h1>
+          <h1>
+            {convertViews(channelsDetails?.statistics.subscriberCount)}{" "}
+            Subscribed
+          </h1>
         </div>
         <div className="ml-auto">
           <button className="bg-red-500 text-white p-2 rounded-md">
