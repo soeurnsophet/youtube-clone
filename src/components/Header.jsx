@@ -8,7 +8,7 @@ import profile from "/assets/images/profile.jpg";
 
 function Header() {
   return (
-    <header className="h-16 w-screen sticksy top-0 left-0 z-50 shadow-lg">
+    <header className=" fixed top-0 left-0 h-16 w-full z-50 bg-white shadow-lg">
       <nav className="h-full flex items-center justify-between px-5 container">
         {/* left */}
         <div className="center-div">

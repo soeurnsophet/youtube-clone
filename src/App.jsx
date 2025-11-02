@@ -7,14 +7,14 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <>
+    <div className="">
       <Header />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="video/:cateId/:vidId" element={<VideoPlay />} />
+        <Route path="/:cateId/:vidId" element={<VideoPlay />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
