@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { convertViews } from "./utils/ConvertViews";
+import { convertViews } from "../utils/ConvertViews";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "react-router-dom";
@@ -23,7 +23,7 @@ function Feed({ category }) {
     loadVideos(category);
   }, [category]);
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {videos.map((video) => (
         <div key={video.id} className="m-2 cursor-pointer">
           <Link to={`/${video.snippet.categoryId}/${video.id}`}>

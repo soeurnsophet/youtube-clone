@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import Videos from "../components/Videos";
+import Videos from "../components/videos/Videos";
 
 function Home({ isExpand }) {
   const [category, setCategory] = React.useState(0);
