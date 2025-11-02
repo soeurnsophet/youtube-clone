@@ -1,30 +1,33 @@
 import axios from "axios";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { convertViews } from "./utils/ConvertViews";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BiSolidLike } from "react-icons/bi";
 import { BiSolidDislike } from "react-icons/bi";
+import { Contexts } from "../context/ContextProvide";
 dayjs.extend(relativeTime); // MUST extend plugin
 
-function Video({ vidId }) {
+function Video() {
+  const { API_KEYS } = useContext(Contexts);
+  const { videoId } = useParams();
   const [videoDetails, setVideoDetails] = useState(null);
   const [channelsDetails, setChannelsDetails] = useState(null);
   const [comments, setComments] = useState([]);
-
+  // get videos data from api by id
   const loadVideoDetails = async () => {
     const res = await axios.get(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${vidId}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEYS}`
     );
     setVideoDetails(res.data.items[0]);
   };
   const loadChannelsDetails = async () => {
     const res = await axios.get(
-      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoDetails?.snippet.channelId}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
+      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoDetails?.snippet.channelId}&key=${API_KEYS}`
     );
     const resComments = await axios.get(
-      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=orderUnspecified&videoId=${vidId}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
+      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=orderUnspecified&videoId=${videoId}&key=${API_KEYS}`
     );
     setChannelsDetails(res.data.items[0]);
     setComments(resComments.data.items);
@@ -32,7 +35,7 @@ function Video({ vidId }) {
 
   useEffect(() => {
     loadVideoDetails();
-  }, [vidId]);
+  }, [videoId]);
   useEffect(() => {
     if (videoDetails?.snippet?.channelId) {
       loadChannelsDetails();
@@ -45,11 +48,11 @@ function Video({ vidId }) {
         <iframe
           width="100%"
           height="600"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-          src={`https://www.youtube.com/embed/${vidId}?autoplay=1`}></iframe>
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}></iframe>
       </div>
       <div>
         <h1 className="text-2xl font-medium tracking-tight mt-3">

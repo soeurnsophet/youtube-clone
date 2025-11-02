@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { IoGameController } from "react-icons/io5";
 import { FaCarSide } from "react-icons/fa";
@@ -10,8 +10,10 @@ import { IoNewspaperSharp } from "react-icons/io5";
 import { FaMicroblog } from "react-icons/fa6";
 import profile from "/assets/images/profile.jpg";
 import profileNemRinda from "/assets/images/nemrinda.jpg";
+import { Contexts } from "../context/ContextProvide";
 
-function Sidebar({ category, setCategory, isExpand }) {
+function Sidebar() {
+  const { category, setCategory, isExpand } = useContext(Contexts);
   return (
     <div
       className={`${

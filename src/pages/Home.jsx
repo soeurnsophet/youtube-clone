@@ -2,21 +2,15 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import Videos from "../components/videos/Videos";
 
-function Home({ isExpand }) {
-  const [category, setCategory] = React.useState(0);
-
+function Home() {
   return (
     <div className="flex mt-16">
       <div className="hidden sm:block">
-        <Sidebar
-          category={category}
-          setCategory={setCategory}
-          isExpand={isExpand}
-        />
+        <Sidebar />
       </div>
       {/* main content shifted right */}
       <div className="w-full sm:w-auto sm:ml-auto">
-        <Videos isExpand={isExpand} category={category} />
+        <Videos />
       </div>
     </div>
   );

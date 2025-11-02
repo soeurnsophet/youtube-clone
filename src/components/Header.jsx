@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoMenu } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { PiBellSimpleRingingBold } from "react-icons/pi";
@@ -6,8 +6,10 @@ import { FaPlus } from "react-icons/fa6";
 import logo from "/assets/images/logo.png";
 import profile from "/assets/images/profile.jpg";
 import { Link } from "react-router-dom";
+import { Contexts } from "../context/ContextProvide";
 
-function Header({ setIsExpand }) {
+function Header() {
+  const { setIsExpand } = useContext(Contexts);
   return (
     <header className="fixed top-0 left-0 h-16 w-full z-50 bg-white shadow-lg ">
       <nav className="h-full flex items-center justify-between px-2 sm:px-5 container">

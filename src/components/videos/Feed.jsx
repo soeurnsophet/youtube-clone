@@ -1,18 +1,20 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { convertViews } from "../utils/ConvertViews";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "react-router-dom";
+import { Contexts } from "../../context/ContextProvide";
 
 dayjs.extend(relativeTime); // MUST extend plugin
 
-function Feed({ category }) {
+function Feed() {
+  const { category, API_KEYS } = useContext(Contexts);
   const [videos, setVideos] = React.useState([]);
   const loadVideos = async (category) => {
     try {
       const response = await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=AIzaSyAggl4XTt7wckyee1YDTg1h3DKdEAufhPA`
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${API_KEYS}`
       );
       setVideos(response.data.items);
     } catch (error) {
