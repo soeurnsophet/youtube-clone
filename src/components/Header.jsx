@@ -44,6 +44,9 @@ function Header() {
               className="focus:outline-none w-full text-[.8rem] pl-2 sm:pl-4 sm:py-2 sm:pr-5"
               type="search"
               placeholder="Search"
+              value={inputValues}
+              onChange={(e) => setInputValues(e.target.value)}
+              onKeyDown={handleSearch}
             />
             <CiSearch className="bg-[#222222] text-white h-6 w-6 px-1 sm:h-10 sm:w-15 sm:p-2" />
           </div>
